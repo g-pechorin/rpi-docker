@@ -1,5 +1,7 @@
 FROM dilgerm/rpi-app-base:jessie
-MAINTAINER Martin Dilger <martin@effectivetrainings.de>
+
+MAINTAINER Peter LaValle <peter.lavalle@gmail.com>
+# previously Martin Dilger <martin@effectivetrainings.de>
 
 RUN mkdir /var/jenkins_home
 
@@ -25,6 +27,7 @@ USER root
     RUN apt-get upgrade
     RUN apt-get update
     RUN apt-get upgrade
+    RUN apt-get install -y oracle-java8-set-default
     RUN apt-get install -y build-essential
     RUN apt-get install -y mercurial
     RUN apt-get install -y openssh-client
