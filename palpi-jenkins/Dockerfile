@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:latest
+FROM gpechorin/palpi-jdk8:latest
 
 MAINTAINER Peter LaValle <peter.lavalle@gmail.com>
 # previously Martin Dilger <martin@effectivetrainings.de>
@@ -8,23 +8,18 @@ USER root
     # be sure we're up to date
         RUN apt-get update
         RUN apt-get upgrade
-        RUN apt-get -qy install ca-certificates        
-        RUN apt-get update
-        RUN apt-get upgrade
-    # do obvious plugin installs
-        RUN apt-get install -y \
-            build-essential \
-            wget \
+    # install dependencies
+        RUN apt-get install -qy \
             mercurial \
             openssh-client \
-            oracle-java8-jdk \
-            python \
-            git
+            cmake \
+            build-essential \
+            git \
+            g++
 
 # setup the user
     RUN mkdir /var/jenkins_home
     ENV JENKINS_HOME /var/jenkins_home
-    ENV JENKINS_HOME=/var/jenkins_home
     RUN groupadd -r jenkins && useradd -d $JENKINS_HOME jenkins -g jenkins
     RUN chown -R jenkins /var/jenkins_home
     RUN chown -R jenkins /usr/local
