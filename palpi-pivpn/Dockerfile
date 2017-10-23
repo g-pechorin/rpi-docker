@@ -7,14 +7,23 @@ MAINTAINER Peter LaValle <peter.lavalle@gmail.com>
 
 # setup
 USER root
-    RUN curl -L https://install.pivpn.io > pivpn.io
-    # be sure we're up to date
-        RUN apt-get update
-        RUN apt-get upgrade
-    # install dependencies
-        RUN apt-get install -qy \
-            ca-certificates \
-            iproute2 \
-            wget
-    
-    RUN export TERM=xterm && cat pivpn.io | bash
+	# be sure we're up to date
+		RUN apt-get update
+		RUN apt-get upgrade
+	# install dependencies
+		RUN apt-get install -qy \
+			ca-certificates \
+			iproute2
+
+# create and configure a user
+	RUN useradd pivpn
+	RUN mkdir /var/pivpn
+	COPY pivpn.io /var/pivpn/pivpn.io
+	RUN chmod +=rwx /var/pivpn/pivpn.io
+	RUN chown -R pivpn /var/pivpn/
+	WORKDIR /var/pivpn
+
+# install/copy the script
+	RUN bash /var/pivpn/pivpn.io
+
+#    RUN export TERM=xterm && cat pivpn.io | bash
