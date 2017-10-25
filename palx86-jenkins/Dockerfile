@@ -25,4 +25,4 @@ USER root
         RUN wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
         CMD java -jar /var/jenkins_home/jenkins.war
 
-# docker run -v ~/.ssh:/var/jenkins_home/.ssh -p 1983:8080 --restart unless-stopped palx86-jenkins
+# docker run -p 1983:8080 --restart unless-stopped palx86-jenkins
