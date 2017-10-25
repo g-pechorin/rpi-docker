@@ -11,6 +11,7 @@ USER root
 		RUN apk add --no-cache openssl
 		RUN apk add --no-cache ca-certificates
 		RUN apk add --no-cache openssh-client
+		RUN apk add --no-cache git
 
 # setup the user
     RUN mkdir /var/jenkins_home
