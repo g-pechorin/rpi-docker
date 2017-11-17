@@ -35,8 +35,6 @@ USER gitbucket
 				RUN wget https://github.com/mrkm4ntr/gitbucket-network-plugin/releases/download/1.4/gitbucket-network-plugin_2.12-1.4.jar
 			# gib gists!
 				RUN wget https://github.com/gitbucket/gitbucket-gist-plugin/releases/download/4.10.0/gitbucket-gist-plugin_2.12-4.10.0.jar
-			# gib purty files menu
-				RUN wget https://github.com/gitbucket-plugins/gitbucket-explorer-plugin/releases/download/4.0.0/gitbucket-explorer-plugin_2.12-4.0.0.jar
 			# gib pages also purty
 				RUN wget https://github.com/gitbucket/gitbucket-pages-plugin/releases/download/v1.5.0/gitbucket-pages-plugin_2.12-1.5.0.jar
 	# launch
