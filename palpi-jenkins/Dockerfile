@@ -24,6 +24,7 @@ USER root
     RUN chown -R jenkins /var/jenkins_home
     RUN chown -R jenkins /usr/local
     RUN usermod -a -G root jenkins
+    RUN echo 'org.gradle.daemon=false' > /var/jenkins_home/.gradle/gradle.properties
 
 # finally ... run it!
 USER jenkins
