@@ -18,6 +18,7 @@ USER root
     ENV JENKINS_HOME /var/jenkins_home
 	RUN adduser -S -h $JENKINS_HOME jenkins
     RUN chown -R jenkins /var/jenkins_home
+    RUN echo 'org.gradle.daemon=false' > /var/jenkins_home/.gradle/gradle.properties
 
 # finally ... run it!
 	USER jenkins
